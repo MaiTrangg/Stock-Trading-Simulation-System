@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 @Service
 @RequiredArgsConstructor
@@ -40,8 +41,8 @@ public class RegisterUseCase {
         );
 
         userRepository.save(user);
-        Role role = roleRepository.findByName("USER");
-
+        Role role = roleRepository.findByName("USER")
+                .orElseThrow(()-> new RuntimeException("Role not found"));
         roleRepository.assignRoleToUser(user.getId(), role.getId());
     }
 }

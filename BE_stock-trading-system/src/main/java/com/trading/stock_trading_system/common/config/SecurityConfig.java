@@ -31,12 +31,12 @@ public class SecurityConfig {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
 
-                // phân quy?n
+
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login",
                                         "/api/auth/register"
                                             ).permitAll()
-                        .requestMatchers("/api/auth/logout").hasRole("USER")
+                        .requestMatchers("/api/auth/logout").authenticated()
                         .anyRequest().authenticated()
                 )
 

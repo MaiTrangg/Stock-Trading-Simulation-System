@@ -1,5 +1,6 @@
 package com.trading.stock_trading_system.auth.infrastructure.persistence.security;
 
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getServletPath();
         System.out.println("request: " + request);
-        return path.startsWith("/api/auth/");
+        return path.startsWith("/api/auth/login")
+                || path.startsWith("/api/auth/register");
     }
 
     @Override
@@ -38,13 +40,22 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         if (header != null && header.startsWith("Bearer ")) {
 
             String token = header.substring(7);
+            System.out.println("TOKEN: " + token);
 
             if (jwtProvider.validate(token)) {
 
-                UUID userId = jwtProvider.getUserId(token);
+                Claims claims = jwtProvider.getClaims(token);
+
+                UUID userId = UUID.fromString(claims.getSubject());
+
+                List<String> roles = claims.get("roles", List.class);
+
+                List<SimpleGrantedAuthority> authorities = roles.stream()
+                        .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+                        .toList();
 
                 UsernamePasswordAuthenticationToken auth =
-                        new UsernamePasswordAuthenticationToken(userId, null, List.of(new SimpleGrantedAuthority("ROLE_USER")));
+                        new UsernamePasswordAuthenticationToken(userId, null, authorities);
 
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
