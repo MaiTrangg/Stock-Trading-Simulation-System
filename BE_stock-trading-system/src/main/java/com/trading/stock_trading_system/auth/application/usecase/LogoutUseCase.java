@@ -2,6 +2,8 @@ package com.trading.stock_trading_system.auth.application.usecase;
 
 import com.trading.stock_trading_system.auth.domain.model.RefreshToken;
 import com.trading.stock_trading_system.auth.domain.repository.RefreshTokenRepository;
+import com.trading.stock_trading_system.common.exception.AppException;
+import com.trading.stock_trading_system.common.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +16,10 @@ public class LogoutUseCase {
     public void execute(String token) {
 
         RefreshToken refreshToken = refreshRepo.findByToken(token)
-                .orElseThrow(() -> new RuntimeException("Token not found"));
+                .orElseThrow(() -> new AppException(ErrorCode.TOKEN_NOT_FOUND));
 
         if (!refreshToken.isValid()) {
-            throw new RuntimeException("Invalid token");
+            throw new AppException(ErrorCode.INVALID_TOKEN);
         }
 
         refreshRepo.revoke(token);

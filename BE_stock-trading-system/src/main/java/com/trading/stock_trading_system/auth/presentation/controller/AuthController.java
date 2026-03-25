@@ -3,9 +3,12 @@ package com.trading.stock_trading_system.auth.presentation.controller;
 import com.trading.stock_trading_system.auth.application.dto.AuthResponse;
 import com.trading.stock_trading_system.auth.application.dto.LoginRequest;
 import com.trading.stock_trading_system.auth.application.dto.RegisterRequest;
+import com.trading.stock_trading_system.auth.application.dto.RegisterResponse;
 import com.trading.stock_trading_system.auth.application.usecase.LoginUseCase;
 import com.trading.stock_trading_system.auth.application.usecase.LogoutUseCase;
 import com.trading.stock_trading_system.auth.application.usecase.RegisterUseCase;
+import com.trading.stock_trading_system.common.exception.ApiResponse;
+import com.trading.stock_trading_system.user.domain.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +22,17 @@ public class AuthController {
     private final LogoutUseCase logoutUseCase;
 
     @PostMapping("/register")
-    public void register(@RequestBody RegisterRequest request) {
-        registerUseCase.execute(request);
+    public ApiResponse<RegisterResponse> register(@RequestBody RegisterRequest request) {
+        ApiResponse<RegisterResponse> apiResponse = new ApiResponse<>();
+        apiResponse.setData(registerUseCase.execute(request));
+        return apiResponse ;
     }
 
     @PostMapping("/login")
-    public AuthResponse login(@RequestBody LoginRequest request) {
-        return loginUseCase.execute(request);
+    public ApiResponse<AuthResponse> login(@RequestBody LoginRequest request) {
+        ApiResponse<AuthResponse> apiResponse = new ApiResponse<>();
+        apiResponse.setData(loginUseCase.execute(request));
+        return apiResponse;
     }
 
     @PostMapping("/logout")

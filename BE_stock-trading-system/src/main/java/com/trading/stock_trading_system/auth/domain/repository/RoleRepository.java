@@ -1,5 +1,6 @@
 package com.trading.stock_trading_system.auth.domain.repository;
 
+import com.trading.stock_trading_system.auth.domain.enums.RoleName;
 import com.trading.stock_trading_system.auth.domain.model.Role;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.UUID;
 @Service
 public interface RoleRepository {
 
-    Optional<Role> findByName(String name);
+    Optional<Role> findByName(RoleName name);
 
     void assignRoleToUser(UUID userId, UUID roleId);
     List<String> findRoleByUserId(UUID userId);

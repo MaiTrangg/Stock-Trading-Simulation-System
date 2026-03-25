@@ -3,6 +3,7 @@ package com.trading.stock_trading_system.user.domain.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 @Getter
 @Setter
@@ -15,6 +16,7 @@ public class User {
 
         private Boolean isDelete;
         private Long version;
+        private LocalDateTime createdAt;
 
         // ? FACTORY METHOD
         public static User create(String username, String email, String encodedPassword) {

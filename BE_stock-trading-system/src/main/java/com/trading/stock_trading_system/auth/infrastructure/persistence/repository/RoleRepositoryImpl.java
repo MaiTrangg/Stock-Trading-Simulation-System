@@ -1,5 +1,6 @@
 package com.trading.stock_trading_system.auth.infrastructure.persistence.repository;
 
+import com.trading.stock_trading_system.auth.domain.enums.RoleName;
 import com.trading.stock_trading_system.auth.domain.model.Role;
 import com.trading.stock_trading_system.auth.domain.model.UserRole;
 import com.trading.stock_trading_system.auth.domain.repository.RoleRepository;
@@ -20,8 +21,8 @@ public class RoleRepositoryImpl implements RoleRepository {
     private final RoleMapper roleMapper;
     private final UserRoleMapper userRoleMapper;
     @Override
-    public Optional<Role> findByName(String name) {
-        return jpaRoleRepository.findRoleByName(name).map(roleMapper::toDomain);
+    public Optional<Role> findByName(RoleName name) {
+        return jpaRoleRepository.findRoleByName(name.name()).map(roleMapper::toDomain);
     }
 
     @Override

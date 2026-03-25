@@ -7,6 +7,8 @@ import com.trading.stock_trading_system.auth.domain.model.Role;
 import com.trading.stock_trading_system.auth.domain.repository.RefreshTokenRepository;
 import com.trading.stock_trading_system.auth.domain.repository.RoleRepository;
 import com.trading.stock_trading_system.auth.infrastructure.persistence.security.JwtProvider;
+import com.trading.stock_trading_system.common.exception.AppException;
+import com.trading.stock_trading_system.common.exception.ErrorCode;
 import com.trading.stock_trading_system.user.domain.model.User;
 import com.trading.stock_trading_system.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,16 +31,16 @@ public class LoginUseCase {
 
         // 1. find user
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
         // 2. check status
         if (!user.isActive()) {
-            throw new RuntimeException("User is not active");
+            throw new AppException(ErrorCode.USER_INACTIVE);
         }
 
         // 3. check password
         if (!passwordEncoder.matches(request.getPassword(), user.getPasswordHash())) {
-            throw new RuntimeException("Invalid password");
+            throw new AppException(ErrorCode.INVALID_CREDENTIALS);
         }
 
         List<String> roles = roleRepository.findRoleByUserId(user.getId());
