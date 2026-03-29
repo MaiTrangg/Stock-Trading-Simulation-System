@@ -12,4 +12,6 @@ public interface UserRepository {
     boolean existsByEmail(String email);
 
     void save(User user);
+
+    public void activateUser(UUID id);
 }

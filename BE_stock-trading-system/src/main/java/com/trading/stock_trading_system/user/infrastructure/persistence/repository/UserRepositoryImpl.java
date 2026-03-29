@@ -7,8 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
-@Repository // ? b?t bu?c
+@Repository
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
@@ -29,5 +30,10 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void save(User user) {
         jpaRepository.save(mapper.toEntity(user));
+    }
+
+    @Override
+    public void activateUser(UUID id) {
+    jpaRepository.activateUser(id);
     }
 }

@@ -39,6 +39,9 @@ public class JwtProvider {
         return UUID.fromString(getClaims(token).getSubject());
     }
 
+    public String generateRefreshToken(){
+        return UUID.randomUUID().toString();
+    }
     public boolean validate(String token) {
         try {
             getClaims(token);

@@ -18,7 +18,7 @@ public class User {
         private Long version;
         private LocalDateTime createdAt;
 
-        // ? FACTORY METHOD
+        //  FACTORY METHOD
         public static User create(String username, String email, String encodedPassword) {
 
                 User user = new User();
@@ -26,7 +26,7 @@ public class User {
                 user.setUsername(username);
                 user.setEmail(email);
                 user.setPasswordHash(encodedPassword);
-                user.setStatus("ACTIVE");
+                user.setStatus("INACTIVE");
                 user.setIsDelete(false);
 
                 return user;

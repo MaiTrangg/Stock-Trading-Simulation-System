@@ -25,7 +25,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String path = request.getServletPath();
         System.out.println("request: " + request);
         return path.startsWith("/api/auth/login")
-                || path.startsWith("/api/auth/register");
+                || path.startsWith("/api/auth/register")
+                || path.startsWith("/api/auth/verify-otp")
+                || path.startsWith("/api/auth/resend-otp")
+
+                ;
     }
 
     @Override

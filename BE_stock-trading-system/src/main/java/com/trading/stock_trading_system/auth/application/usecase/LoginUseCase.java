@@ -33,6 +33,8 @@ public class LoginUseCase {
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
+        UUID userId = user.getId();
+
         // 2. check status
         if (!user.isActive()) {
             throw new AppException(ErrorCode.USER_INACTIVE);
@@ -43,21 +45,20 @@ public class LoginUseCase {
             throw new AppException(ErrorCode.INVALID_CREDENTIALS);
         }
 
-        List<String> roles = roleRepository.findRoleByUserId(user.getId());
+        List<String> roles = roleRepository.findRoleByUserId(userId);
         // 4. create access token (JWT)
-        String accessToken = jwtProvider.generateToken(user.getId(), roles);
+        String accessToken = jwtProvider.generateToken(userId, roles);
 
         // 5. create refresh token (save DB)
-        String refreshTokenValue = UUID.randomUUID().toString();
+        String refreshTokenValue = jwtProvider.generateRefreshToken();
 
         RefreshToken refreshToken = RefreshToken.create(
-                user.getId(),
+                userId,
                 refreshTokenValue
         );
 
         refreshTokenRepository.save(refreshToken);
 
-        // 6. return response
         return AuthResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshTokenValue)
