@@ -31,12 +31,13 @@ public class SecurityConfig {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
 
-
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login",
                                         "/api/auth/register",
                                         "/api/auth/verify-otp",
-                                        "/api/auth/resend-otp"
+                                        "/api/auth/resend-otp",
+                                        "/api/auth/forgot-password",
+                                        "/api/auth/reset-password"
                                             ).permitAll()
                         .requestMatchers("/api/auth/logout",
                                          "/api/auth/refresh-token"

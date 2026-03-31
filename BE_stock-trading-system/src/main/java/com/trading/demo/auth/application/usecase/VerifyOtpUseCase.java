@@ -1,5 +1,6 @@
 package com.trading.demo.auth.application.usecase;
 
+import com.trading.demo.auth.domain.enums.OtpType;
 import com.trading.demo.auth.domain.model.EmailVerification;
 import com.trading.demo.auth.domain.repository.EmailVerificationRepository;
 import com.trading.demo.common.exception.AppException;
@@ -29,7 +30,7 @@ public class VerifyOtpUseCase {
 
         //2. find email verification by userId with status = ACTIVE, otp, userId
         EmailVerification ev = repo
-                .findActiveOtp(user.getId())
+                .findActiveOtp(user.getId(), OtpType.REGISTER)
                 .orElseThrow(()-> new AppException(ErrorCode.EmailVerification_NOT_FOUND));
 
         //5. check otp spam

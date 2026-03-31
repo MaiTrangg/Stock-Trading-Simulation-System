@@ -4,6 +4,7 @@ import com.trading.demo.auth.application.dto.RegisterRequest;
 import com.trading.demo.auth.application.dto.RegisterResponse;
 import com.trading.demo.auth.application.service.EmailService;
 import com.trading.demo.auth.application.service.OtpService;
+import com.trading.demo.auth.domain.enums.OtpType;
 import com.trading.demo.auth.domain.enums.RoleName;
 import com.trading.demo.auth.domain.model.EmailVerification;
 import com.trading.demo.auth.domain.model.Role;
@@ -58,7 +59,7 @@ public class RegisterUseCase {
         String otp = otpService.generateOtp();
 
         //6. create and save email verification
-        EmailVerification ev = EmailVerification.create(user.getId(),passwordEncoder.encode(otp));
+        EmailVerification ev = EmailVerification.create(user.getId(),passwordEncoder.encode(otp), OtpType.REGISTER);
         emailVerificationRepository.save(ev);
 
         //7. send OTP for email
