@@ -24,3 +24,15 @@ spring:
 #              scope:
 #                - email
 #                - profile
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: kimdohoon724@gmail.com
+    password: flvg mtnq lhum ehjk #flvg mtnq lhum ehjk
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
