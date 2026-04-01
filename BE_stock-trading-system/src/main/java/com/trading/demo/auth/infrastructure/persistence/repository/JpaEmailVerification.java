@@ -1,6 +1,7 @@
 package com.trading.demo.auth.infrastructure.persistence.repository;
 
 import com.trading.demo.auth.domain.enums.OtpStatus;
+import com.trading.demo.auth.domain.enums.OtpType;
 import com.trading.demo.auth.infrastructure.persistence.entity.EmailVerificationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -29,7 +30,7 @@ Optional<EmailVerificationEntity> findActiveOtpByToken(@Param("userId") UUID use
 """)
     void increaseAttempt(@Param("id")UUID id);
 
-    Optional<EmailVerificationEntity> findByUserIdAndStatus(UUID userId, OtpStatus status);
+    Optional<EmailVerificationEntity> findByUserIdAndStatusAndAndType(UUID userId, OtpStatus status, OtpType type);
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Modifying
