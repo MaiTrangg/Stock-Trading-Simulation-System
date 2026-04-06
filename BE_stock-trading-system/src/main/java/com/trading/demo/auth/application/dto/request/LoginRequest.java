@@ -1,4 +1,4 @@
-package com.trading.demo.auth.application.dto;
+package com.trading.demo.auth.application.dto.request;
 
 import lombok.Data;
 

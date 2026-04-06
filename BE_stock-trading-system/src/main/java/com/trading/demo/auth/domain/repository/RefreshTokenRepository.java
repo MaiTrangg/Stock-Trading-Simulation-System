@@ -1,8 +1,8 @@
 package com.trading.demo.auth.domain.repository;
 
-import com.trading.demo.auth.domain.model.RefreshToken;
-
 import java.util.Optional;
+
+import com.trading.demo.auth.domain.model.RefreshToken;
 
 public interface RefreshTokenRepository {
 

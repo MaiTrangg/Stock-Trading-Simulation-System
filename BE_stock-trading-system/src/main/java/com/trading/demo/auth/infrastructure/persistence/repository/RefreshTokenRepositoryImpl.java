@@ -1,12 +1,14 @@
 package com.trading.demo.auth.infrastructure.persistence.repository;
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
+
 import com.trading.demo.auth.domain.model.RefreshToken;
 import com.trading.demo.auth.domain.repository.RefreshTokenRepository;
 import com.trading.demo.auth.infrastructure.persistence.mapper.RefreshTokenMapper;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
@@ -22,8 +24,7 @@ public class RefreshTokenRepositoryImpl implements RefreshTokenRepository {
 
     @Override
     public Optional<RefreshToken> findByToken(String token) {
-        return jpaRepository.findByToken(token)
-                .map(mapper::toDomain);
+        return jpaRepository.findByToken(token).map(mapper::toDomain);
     }
 
     @Override

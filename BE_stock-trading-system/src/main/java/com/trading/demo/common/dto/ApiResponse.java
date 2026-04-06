@@ -1,10 +1,16 @@
-package com.trading.demo.common.exception;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
-import org.springframework.http.HttpStatus;
+package com.trading.demo.common.dto;
 
 import java.time.LocalDateTime;
+
+import org.springframework.http.HttpStatus;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -12,21 +18,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ApiResponse <T>{
+public class ApiResponse<T> {
     private boolean success;
     private String message;
     private T data;
     private int status;
     private LocalDateTime timestamp;
 
-    public  ApiResponse<T> success(T data) {
+    public ApiResponse<T> success(String message, T data) {
         return ApiResponse.<T>builder()
                 .success(true)
-                .message("Success")
+                .message(message)
                 .data(data)
                 .timestamp(LocalDateTime.now())
                 .status(HttpStatus.OK.value())
                 .build();
     }
-
 }

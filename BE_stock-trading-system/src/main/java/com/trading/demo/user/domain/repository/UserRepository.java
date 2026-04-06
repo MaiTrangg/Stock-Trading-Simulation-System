@@ -1,9 +1,9 @@
 package com.trading.demo.user.domain.repository;
 
-import com.trading.demo.user.domain.model.User;
-
 import java.util.Optional;
 import java.util.UUID;
+
+import com.trading.demo.user.domain.model.User;
 
 public interface UserRepository {
 
@@ -13,5 +13,9 @@ public interface UserRepository {
 
     void save(User user);
 
-    public void activateUser(UUID id);
+    boolean existsByUserName(String userName);
+
+    void activateUser(UUID id);
+
+    Optional<User> findByIdAndIsDeleteFalse(UUID id);
 }

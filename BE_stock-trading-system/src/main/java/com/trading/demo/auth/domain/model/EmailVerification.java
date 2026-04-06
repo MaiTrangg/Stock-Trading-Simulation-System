@@ -1,14 +1,15 @@
 package com.trading.demo.auth.domain.model;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import com.trading.demo.auth.domain.enums.OtpStatus;
 import com.trading.demo.auth.domain.enums.OtpType;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -46,19 +47,14 @@ public class EmailVerification {
 
     // BUSINESS METHODS
     public boolean isExpired() {
-        System.out.println("expiresAt: "+expiresAt);
         return expiresAt.isBefore(LocalDateTime.now());
     }
 
     public boolean canVerify(int maxAttempt) {
-        System.out.println("verifyAttempts: "+verifyAttempts);
-        System.out.println("maxAttempt: "+ maxAttempt);
-        System.out.println("status: "+ status);
         return verifyAttempts < maxAttempt && status == OtpStatus.ACTIVE;
     }
 
     public boolean isCooldown() {
-        return lastSentAt != null &&
-                lastSentAt.isAfter(LocalDateTime.now().minusSeconds(30));
+        return lastSentAt != null && lastSentAt.isAfter(LocalDateTime.now().minusSeconds(30));
     }
 }

@@ -1,34 +1,36 @@
 package com.trading.demo.auth.application.usecase;
 
-import com.trading.demo.auth.application.service.EmailService;
-import com.trading.demo.auth.application.service.OtpService;
-import com.trading.demo.auth.domain.enums.OtpType;
-import com.trading.demo.auth.domain.model.EmailVerification;
-import com.trading.demo.auth.domain.repository.EmailVerificationRepository;
-import com.trading.demo.common.exception.AppException;
-import com.trading.demo.common.exception.ErrorCode;
-import com.trading.demo.user.domain.model.User;
-import com.trading.demo.user.domain.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.trading.demo.common.exception.ErrorCode.USER_NOT_FOUND;
+import com.trading.demo.auth.application.service.EmailService;
+import com.trading.demo.auth.application.service.OtpGenerator;
+import com.trading.demo.auth.domain.enums.OtpType;
+import com.trading.demo.auth.domain.model.EmailVerification;
+import com.trading.demo.auth.domain.repository.EmailVerificationRepository;
+import com.trading.demo.common.enums.ErrorCode;
+import com.trading.demo.common.exception.AppException;
+import com.trading.demo.user.domain.model.User;
+import com.trading.demo.user.domain.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
+
 
 @Service
 @RequiredArgsConstructor
 public class ForgotPasswordUseCase {
     private final UserRepository userRepository;
     private final EmailVerificationRepository emailVerificationRepository;
-    private final OtpService otpService;
+    private final OtpGenerator otpService;
     private final PasswordEncoder passwordEncoder;
     private final EmailService emailService;
+
     @Transactional
     public void execute(String email) {
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new AppException(USER_NOT_FOUND));
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
         EmailVerification oldEv = emailVerificationRepository.findActiveOtp(user.getId(), OtpType.FORGOT_PASSWORD)
                 .orElse(null);
@@ -37,7 +39,7 @@ public class ForgotPasswordUseCase {
             throw new AppException(ErrorCode.OTP_COOLDOWN);
         }
 
-        if (oldEv != null&& oldEv.isExpired()) {
+        if (oldEv != null && oldEv.isExpired()) {
             emailVerificationRepository.markExpired(oldEv.getId());
         }
 

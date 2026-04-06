@@ -1,0 +1,263 @@
+2026-04-06 01:23:03 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-06 01:23:03 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-04-06 01:23:03 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 01:23:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-06 01:23:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-06 01:23:23 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-04-06 01:23:23 [main] INFO  c.t.d.StockTradingSystemApplication - Starting StockTradingSystemApplication using Java 21.0.2 with PID 37300 (F:\stock-trading-system_demo\BE_stock-trading-system\build\classes\java\main started by Asus in F:\stock-trading-system_demo\BE_stock-trading-system)
+2026-04-06 01:23:23 [main] DEBUG c.t.d.StockTradingSystemApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-06 01:23:23 [main] INFO  c.t.d.StockTradingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-06 01:23:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-06 01:23:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66 ms. Found 5 JPA repository interfaces.
+2026-04-06 01:23:25 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-06 01:23:25 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-06 01:23:25 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-06 01:23:25 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-06 01:23:25 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2014 ms
+2026-04-06 01:23:25 [main] DEBUG c.t.d.a.i.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-06 01:23:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-06 01:23:26 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@29c80149
+2026-04-06 01:23:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-06 01:23:26 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/trading_system_db (PostgreSQL 15.17)
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 16 migrations (execution time 00:00.035s)
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 7
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "8 - market create stocks"
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "9 - market create stock price history"
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "10 - trading create orders"
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "11 - trading create order status history"
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "12 - trading create trades"
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "13 - portfolio portfolios"
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "14 - portfolio funds"
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "15 - portfolio wallet transactions"
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version "16 - portfolio watchlists"
+2026-04-06 01:23:26 [main] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 9 migrations to schema "public", now at version v16 (execution time 00:00.159s)
+2026-04-06 01:23:26 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-06 01:23:26 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-06 01:23:27 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-06 01:23:27 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/trading_system_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.17
+	Default catalog/schema: trading_system_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-06 01:23:29 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-06 01:23:29 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 01:23:29 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-06 01:23:30 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-06 01:23:31 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-04-06 01:23:31 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-04-06 01:23:31 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-04-06 01:23:31 [main] INFO  c.t.d.StockTradingSystemApplication - Started StockTradingSystemApplication in 8.775 seconds (process running for 9.665)
+2026-04-06 01:23:32 [RMI TCP Connection(2)-172.17.80.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-06 01:23:32 [RMI TCP Connection(2)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-06 01:23:32 [RMI TCP Connection(2)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-04-06 02:51:39 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m37s370ms503탎).
+2026-04-06 05:30:45 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h4m36s92ms410탎800ns).
+2026-04-06 06:22:16 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m59s902ms258탎200ns).
+2026-04-06 08:24:14 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h45m28s14ms828탎800ns).
+2026-04-06 10:24:26 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-06 10:24:26 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-04-06 10:24:26 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 10:24:26 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-06 10:24:26 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-06 10:24:39 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-04-06 10:24:39 [main] INFO  c.t.d.StockTradingSystemApplication - Starting StockTradingSystemApplication using Java 21.0.2 with PID 32700 (F:\stock-trading-system_demo\BE_stock-trading-system\build\classes\java\main started by Asus in F:\stock-trading-system_demo\BE_stock-trading-system)
+2026-04-06 10:24:39 [main] DEBUG c.t.d.StockTradingSystemApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-06 10:24:39 [main] INFO  c.t.d.StockTradingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-06 10:24:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-06 10:24:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 64 ms. Found 5 JPA repository interfaces.
+2026-04-06 10:24:40 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-06 10:24:40 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-06 10:24:40 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-06 10:24:40 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-06 10:24:40 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1636 ms
+2026-04-06 10:24:41 [main] DEBUG c.t.d.a.i.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-06 10:24:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-06 10:24:41 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7e1762e6
+2026-04-06 10:24:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-06 10:24:41 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/trading_system_db (PostgreSQL 15.17)
+2026-04-06 10:24:41 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 16 migrations (execution time 00:00.042s)
+2026-04-06 10:24:41 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 16
+2026-04-06 10:24:41 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-04-06 10:24:41 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-06 10:24:41 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-06 10:24:42 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-06 10:24:42 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/trading_system_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.17
+	Default catalog/schema: trading_system_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-06 10:24:43 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-06 10:24:43 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 10:24:43 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-06 10:24:44 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-06 10:24:45 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-04-06 10:24:45 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-04-06 10:24:45 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-04-06 10:24:45 [main] INFO  c.t.d.StockTradingSystemApplication - Started StockTradingSystemApplication in 6.943 seconds (process running for 7.69)
+2026-04-06 10:24:46 [RMI TCP Connection(1)-172.17.80.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-06 10:24:46 [RMI TCP Connection(1)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-06 10:24:46 [RMI TCP Connection(1)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-04-06 10:43:34 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-06 10:43:34 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-04-06 10:43:34 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 10:43:34 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-06 10:43:34 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-06 10:43:41 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-04-06 10:43:41 [main] INFO  c.t.d.StockTradingSystemApplication - Starting StockTradingSystemApplication using Java 21.0.2 with PID 8708 (F:\stock-trading-system_demo\BE_stock-trading-system\build\classes\java\main started by Asus in F:\stock-trading-system_demo\BE_stock-trading-system)
+2026-04-06 10:43:41 [main] DEBUG c.t.d.StockTradingSystemApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-06 10:43:41 [main] INFO  c.t.d.StockTradingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-06 10:43:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-06 10:43:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 60 ms. Found 5 JPA repository interfaces.
+2026-04-06 10:43:42 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-06 10:43:42 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-06 10:43:42 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-06 10:43:42 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-06 10:43:43 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1587 ms
+2026-04-06 10:43:43 [main] DEBUG c.t.d.a.i.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-06 10:43:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-06 10:43:43 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3c6fb501
+2026-04-06 10:43:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-06 10:43:43 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/trading_system_db (PostgreSQL 15.17)
+2026-04-06 10:43:43 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 16 migrations (execution time 00:00.047s)
+2026-04-06 10:43:43 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 16
+2026-04-06 10:43:43 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-04-06 10:43:43 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-06 10:43:43 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-06 10:43:44 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-06 10:43:44 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/trading_system_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.17
+	Default catalog/schema: trading_system_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-06 10:43:45 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-06 10:43:45 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 10:43:45 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-06 10:43:46 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-06 10:43:47 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-04-06 10:43:47 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-04-06 10:43:47 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-04-06 10:43:47 [main] INFO  c.t.d.StockTradingSystemApplication - Started StockTradingSystemApplication in 6.607 seconds (process running for 7.277)
+2026-04-06 10:43:47 [RMI TCP Connection(2)-172.17.80.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-06 10:43:47 [RMI TCP Connection(2)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-06 10:43:47 [RMI TCP Connection(2)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-04-06 10:51:27 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-06 10:51:27 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-04-06 10:51:27 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 10:51:27 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-06 10:51:27 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-06 10:51:32 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-04-06 10:51:32 [main] INFO  c.t.d.StockTradingSystemApplication - Starting StockTradingSystemApplication using Java 21.0.2 with PID 27552 (F:\stock-trading-system_demo\BE_stock-trading-system\build\classes\java\main started by Asus in F:\stock-trading-system_demo\BE_stock-trading-system)
+2026-04-06 10:51:32 [main] DEBUG c.t.d.StockTradingSystemApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-06 10:51:32 [main] INFO  c.t.d.StockTradingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-06 10:51:33 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-06 10:51:33 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 64 ms. Found 5 JPA repository interfaces.
+2026-04-06 10:51:34 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-06 10:51:34 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-06 10:51:34 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-06 10:51:34 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-06 10:51:34 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1633 ms
+2026-04-06 10:51:34 [main] DEBUG c.t.d.a.i.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-06 10:51:34 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-06 10:51:34 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@26712838
+2026-04-06 10:51:34 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-06 10:51:34 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/trading_system_db (PostgreSQL 15.17)
+2026-04-06 10:51:34 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 16 migrations (execution time 00:00.035s)
+2026-04-06 10:51:34 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 16
+2026-04-06 10:51:34 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-04-06 10:51:35 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-06 10:51:35 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-06 10:51:35 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-06 10:51:35 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/trading_system_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.17
+	Default catalog/schema: trading_system_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-06 10:51:36 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-06 10:51:36 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 10:51:36 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-06 10:51:37 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-06 10:51:38 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-04-06 10:51:38 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-04-06 10:51:38 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-04-06 10:51:38 [main] INFO  c.t.d.StockTradingSystemApplication - Started StockTradingSystemApplication in 6.538 seconds (process running for 7.181)
+2026-04-06 10:51:39 [RMI TCP Connection(2)-172.17.80.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-06 10:51:39 [RMI TCP Connection(2)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-06 10:51:39 [RMI TCP Connection(2)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-04-06 10:53:01 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-06 10:53:01 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-04-06 10:53:01 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 10:53:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-06 10:53:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-06 10:53:06 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-04-06 10:53:06 [main] INFO  c.t.d.StockTradingSystemApplication - Starting StockTradingSystemApplication using Java 21.0.2 with PID 30288 (F:\stock-trading-system_demo\BE_stock-trading-system\build\classes\java\main started by Asus in F:\stock-trading-system_demo\BE_stock-trading-system)
+2026-04-06 10:53:06 [main] DEBUG c.t.d.StockTradingSystemApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-06 10:53:06 [main] INFO  c.t.d.StockTradingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-06 10:53:07 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-06 10:53:07 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 5 JPA repository interfaces.
+2026-04-06 10:53:08 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-06 10:53:08 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-06 10:53:08 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-06 10:53:08 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-06 10:53:08 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1571 ms
+2026-04-06 10:53:08 [main] DEBUG c.t.d.a.i.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-06 10:53:08 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-06 10:53:08 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3e0855b0
+2026-04-06 10:53:08 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-06 10:53:08 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/trading_system_db (PostgreSQL 15.17)
+2026-04-06 10:53:09 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 16 migrations (execution time 00:00.050s)
+2026-04-06 10:53:09 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 16
+2026-04-06 10:53:09 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2026-04-06 10:53:09 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-06 10:53:09 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-06 10:53:09 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-06 10:53:09 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/trading_system_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.17
+	Default catalog/schema: trading_system_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-06 10:53:10 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-06 10:53:10 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06 10:53:10 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-06 10:53:11 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-06 10:53:12 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-04-06 10:53:12 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-04-06 10:53:12 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-04-06 10:53:12 [main] INFO  c.t.d.StockTradingSystemApplication - Started StockTradingSystemApplication in 6.491 seconds (process running for 7.213)
+2026-04-06 10:53:13 [RMI TCP Connection(1)-172.17.80.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-06 10:53:13 [RMI TCP Connection(1)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-06 10:53:13 [RMI TCP Connection(1)-172.17.80.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms

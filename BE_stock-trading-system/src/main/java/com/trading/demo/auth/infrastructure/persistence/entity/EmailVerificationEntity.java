@@ -1,15 +1,26 @@
 package com.trading.demo.auth.infrastructure.persistence.entity;
 
-import com.trading.demo.auth.domain.enums.OtpStatus;
-import com.trading.demo.auth.domain.enums.OtpType;
-import jakarta.persistence.*;
-import lombok.*;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.trading.demo.auth.domain.enums.OtpStatus;
+import com.trading.demo.auth.domain.enums.OtpType;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Version;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -29,7 +40,6 @@ public class EmailVerificationEntity {
     @Column(nullable = false, length = 255)
     private String token; // hashed OTP
 
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private OtpType type; //  EMAIL_VERIFICATION, RESET_PASSWORD,...
@@ -40,8 +50,6 @@ public class EmailVerificationEntity {
 
     @Column(name = "expires_at", nullable = false)
     private LocalDateTime expiresAt;
-
-
 
     @Column(name = "verify_attempts", nullable = false)
     private int verifyAttempts = 0;
@@ -56,7 +64,6 @@ public class EmailVerificationEntity {
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-
     @Column(name = "created_by")
     private UUID createdBy;
 
@@ -67,9 +74,7 @@ public class EmailVerificationEntity {
     @Column(name = "updated_by")
     private UUID updatedBy;
 
-
     @Version
     @Column(nullable = false)
     private long version;
-
 }
