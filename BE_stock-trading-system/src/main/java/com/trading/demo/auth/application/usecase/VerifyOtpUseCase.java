@@ -4,6 +4,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.trading.demo.auth.domain.enums.OtpType;
 import com.trading.demo.auth.domain.model.EmailVerification;
 import com.trading.demo.auth.domain.repository.EmailVerificationRepository;
 import com.trading.demo.common.enums.ErrorCode;
@@ -31,10 +32,10 @@ public class VerifyOtpUseCase {
                         .findByEmail(email)
                         .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
-        // 2. find email verification by userId with status = ACTIVE, otp, userId
-        EmailVerification ev =
-                repo.findActiveOtp(user.getId())
-                        .orElseThrow(() -> new AppException(ErrorCode.EmailVerification_NOT_FOUND));
+        //2. find email verification by userId with status = ACTIVE, otp, userId
+        EmailVerification ev = repo
+                .findActiveOtp(user.getId(), OtpType.REGISTER)
+                .orElseThrow(() -> new AppException(ErrorCode.EmailVerification_NOT_FOUND));
 
         // 5. check otp spam
         if (!ev.canVerify(MAX_ATTEMPT)) {

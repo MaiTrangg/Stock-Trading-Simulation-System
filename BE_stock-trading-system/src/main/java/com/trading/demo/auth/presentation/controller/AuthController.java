@@ -1,5 +1,6 @@
 package com.trading.demo.auth.presentation.controller;
 
+import com.trading.demo.auth.application.usecase.ForgotPasswordUseCase;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trading.demo.auth.application.constant.AuthMessage;
+import com.trading.demo.auth.application.dto.ResetPasswordRequest;
 import com.trading.demo.auth.application.dto.request.LoginRequest;
 import com.trading.demo.auth.application.dto.request.RegisterRequest;
 import com.trading.demo.auth.application.dto.request.ResendOtpRequest;
@@ -18,6 +20,7 @@ import com.trading.demo.auth.application.usecase.LogoutUseCase;
 import com.trading.demo.auth.application.usecase.RefreshTokenUseCase;
 import com.trading.demo.auth.application.usecase.RegisterUseCase;
 import com.trading.demo.auth.application.usecase.ResendOtpUseCase;
+import com.trading.demo.auth.application.usecase.ResetPasswordUseCase;
 import com.trading.demo.auth.application.usecase.VerifyOtpUseCase;
 import com.trading.demo.auth.domain.model.RefreshToken;
 import com.trading.demo.common.dto.ApiResponse;
@@ -34,6 +37,8 @@ public class AuthController {
     private final VerifyOtpUseCase verifyOtpUseCase;
     private final ResendOtpUseCase resendOtpUseCase;
     private final RefreshTokenUseCase refreshTokenUseCase;
+    private final ForgotPasswordUseCase forgotPasswordUseCase;
+    private final ResetPasswordUseCase resetPasswordUseCase;
 
     @PostMapping("/register")
     public ApiResponse<RegisterResponse> register(@RequestBody RegisterRequest request) {
@@ -72,5 +77,17 @@ public class AuthController {
     public ApiResponse<String> resendOtp(@RequestBody ResendOtpRequest request) {
         resendOtpUseCase.execute(request.getEmail());
         return new ApiResponse<String>().success(AuthMessage.RESEND_OTP_SUCCESS, null);
+    }
+
+    @PostMapping("/forgot-password")
+    public ApiResponse<String> forgotPassword(@RequestBody ResendOtpRequest request) {
+        forgotPasswordUseCase.execute(request.getEmail());
+        return new ApiResponse<String>().success(AuthMessage.SEND_OTP_SUCCESS, null);
+    }
+
+    @PostMapping("/reset-password")
+    public ApiResponse<String> resetPassword(@RequestBody ResetPasswordRequest request) {
+        resetPasswordUseCase.execute(request.getEmail(), request.getToken(), request.getNewPassword());
+        return new ApiResponse<String>().success(AuthMessage.RESET_PASSWORD_SUCCESS, null);
     }
 }

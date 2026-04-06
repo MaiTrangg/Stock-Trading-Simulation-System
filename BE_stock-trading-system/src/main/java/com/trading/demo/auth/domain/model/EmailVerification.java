@@ -31,12 +31,12 @@ public class EmailVerification {
     private LocalDateTime lastSentAt;
 
     // FACTORY METHOD
-    public static EmailVerification create(UUID userId, String token) {
+    public static EmailVerification create(UUID userId, String token, OtpType verifyType) {
         EmailVerification ev = new EmailVerification();
         ev.id = UUID.randomUUID();
         ev.userId = userId;
         ev.token = token;
-        ev.type = OtpType.REGISTER;
+        ev.type = verifyType;
         ev.status = OtpStatus.ACTIVE;
         ev.expiresAt = LocalDateTime.now().plusMinutes(5);
         ev.verifyAttempts = 0;

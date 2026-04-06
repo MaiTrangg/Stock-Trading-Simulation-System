@@ -16,54 +16,43 @@ import com.trading.demo.user.domain.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
+
 @Service
 @RequiredArgsConstructor
-public class ResendOtpUseCase {
-
+public class ForgotPasswordUseCase {
     private final UserRepository userRepository;
     private final EmailVerificationRepository emailVerificationRepository;
     private final OtpGenerator otpService;
-    private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
+    private final EmailService emailService;
 
     @Transactional
     public void execute(String email) {
-        // 1. find user by email
-        User user = userRepository.findByEmail(email).orElseThrow();
 
-        //2. get email verification is ACTIVE in DB
-        EmailVerification oldEv = emailVerificationRepository.findActiveOtp(user.getId(), OtpType.REGISTER).orElseThrow(
-                () -> new AppException(ErrorCode.EmailVerification_NOT_FOUND)
-        );
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
-        // 3. cooldown
+        EmailVerification oldEv = emailVerificationRepository.findActiveOtp(user.getId(), OtpType.FORGOT_PASSWORD)
+                .orElse(null);
+
         if (oldEv != null && oldEv.isCooldown()) {
             throw new AppException(ErrorCode.OTP_COOLDOWN);
         }
 
-        // 4. expire old OTP
-        if (oldEv != null) {
+        if (oldEv != null && oldEv.isExpired()) {
             emailVerificationRepository.markExpired(oldEv.getId());
         }
 
-        // 5. generate OTP (6 numbers)
         String otp = otpService.generateOtp();
 
-        //6. Create and save new email verification
         EmailVerification ev = EmailVerification.create(
                 user.getId(),
                 passwordEncoder.encode(otp),
-                OtpType.REGISTER
+                OtpType.FORGOT_PASSWORD
         );
 
-        try {
-            emailVerificationRepository.save(ev);
-        } catch (Exception e) {
-            throw new AppException(ErrorCode.OTP_ALREADY_EXISTS);
-        }
+        emailVerificationRepository.save(ev);
 
-        // 5. send email with new OTP
         emailService.sendOtp(user.getEmail(), otp);
-        System.out.println("sent email");
     }
 }

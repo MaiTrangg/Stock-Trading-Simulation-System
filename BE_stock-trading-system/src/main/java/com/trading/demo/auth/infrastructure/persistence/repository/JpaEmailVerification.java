@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trading.demo.auth.domain.enums.OtpStatus;
+import com.trading.demo.auth.domain.enums.OtpType;
 import com.trading.demo.auth.infrastructure.persistence.entity.EmailVerificationEntity;
 
 public interface JpaEmailVerification extends JpaRepository<EmailVerificationEntity, UUID> {
@@ -31,7 +32,7 @@ public interface JpaEmailVerification extends JpaRepository<EmailVerificationEnt
                     """)
     void increaseAttempt(@Param("id") UUID id);
 
-    Optional<EmailVerificationEntity> findByUserIdAndStatus(UUID userId, OtpStatus status);
+    Optional<EmailVerificationEntity> findByUserIdAndStatusAndAndType(UUID userId, OtpStatus status, OtpType type);
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Modifying

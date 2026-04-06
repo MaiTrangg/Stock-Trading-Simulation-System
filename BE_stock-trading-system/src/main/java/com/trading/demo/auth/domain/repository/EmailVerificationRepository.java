@@ -3,11 +3,12 @@ package com.trading.demo.auth.domain.repository;
 import java.util.Optional;
 import java.util.UUID;
 
+import com.trading.demo.auth.domain.enums.OtpType;
 import com.trading.demo.auth.domain.model.EmailVerification;
 
 public interface EmailVerificationRepository {
 
-    Optional<EmailVerification> findActiveOtp(UUID userId);
+    Optional<EmailVerification> findActiveOtp(UUID userId, OtpType verifyType);
 
     Optional<EmailVerification> findActiveOtpByToken(UUID userId, String token);
 
