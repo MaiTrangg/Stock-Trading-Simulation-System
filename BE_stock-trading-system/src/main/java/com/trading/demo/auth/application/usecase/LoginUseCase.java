@@ -1,21 +1,24 @@
 package com.trading.demo.auth.application.usecase;
 
-import com.trading.demo.auth.application.dto.AuthResponse;
-import com.trading.demo.auth.application.dto.LoginRequest;
-import com.trading.demo.auth.domain.model.RefreshToken;
-import com.trading.demo.auth.domain.repository.RefreshTokenRepository;
-import com.trading.demo.auth.domain.repository.RoleRepository;
-import com.trading.demo.auth.infrastructure.persistence.security.JwtProvider;
-import com.trading.demo.common.exception.AppException;
-import com.trading.demo.common.exception.ErrorCode;
-import com.trading.demo.user.domain.model.User;
-import com.trading.demo.user.domain.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.UUID;
+import com.trading.demo.auth.application.dto.request.LoginRequest;
+import com.trading.demo.auth.application.dto.response.AuthResponse;
+import com.trading.demo.auth.domain.model.RefreshToken;
+import com.trading.demo.auth.domain.repository.RefreshTokenRepository;
+import com.trading.demo.auth.domain.repository.RoleRepository;
+import com.trading.demo.auth.infrastructure.security.JwtProvider;
+import com.trading.demo.common.enums.ErrorCode;
+import com.trading.demo.common.exception.AppException;
+import com.trading.demo.user.domain.model.User;
+import com.trading.demo.user.domain.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
+
 @Service
 @RequiredArgsConstructor
 public class LoginUseCase {
@@ -29,8 +32,10 @@ public class LoginUseCase {
     public AuthResponse execute(LoginRequest request) {
 
         // 1. find user
-        User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
+        User user =
+                userRepository
+                        .findByEmail(request.getEmail())
+                        .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
         UUID userId = user.getId();
 
@@ -51,16 +56,10 @@ public class LoginUseCase {
         // 5. create refresh token (save DB)
         String refreshTokenValue = jwtProvider.generateRefreshToken();
 
-        RefreshToken refreshToken = RefreshToken.create(
-                userId,
-                refreshTokenValue
-        );
+        RefreshToken refreshToken = RefreshToken.create(userId, refreshTokenValue);
 
         refreshTokenRepository.save(refreshToken);
 
-        return AuthResponse.builder()
-                .accessToken(accessToken)
-                .refreshToken(refreshTokenValue)
-                .build();
+        return AuthResponse.builder().accessToken(accessToken).refreshToken(refreshTokenValue).build();
     }
 }

@@ -1,12 +1,13 @@
 package com.trading.demo.user.infrastructure.persistence.repository;
 
-import com.trading.demo.user.infrastructure.persistence.entity.UserEntity;
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Optional;
-import java.util.UUID;
+import com.trading.demo.user.infrastructure.persistence.entity.UserEntity;
 
 public interface JpaUserRepository extends JpaRepository<UserEntity, UUID> {
 
@@ -15,10 +16,8 @@ public interface JpaUserRepository extends JpaRepository<UserEntity, UUID> {
     boolean existsByEmail(String email);
 
     @Modifying
-    @Query("""
-    UPDATE UserEntity u
-    SET u.status = 'ACTIVE'
-    WHERE u.id = :id
-""")
+    @Query("UPDATE UserEntity u SET u.status = 'ACTIVE'WHERE u.id = :id ")
     void activateUser(UUID id);
+
+    Optional<UserEntity> findByIdAndIsDeleteFalse(UUID id);
 }
