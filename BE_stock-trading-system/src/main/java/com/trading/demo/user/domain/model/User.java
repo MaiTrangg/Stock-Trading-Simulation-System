@@ -35,4 +35,12 @@ public class User {
             return "ACTIVE".equals(this.status) && !Boolean.TRUE.equals(this.isDelete);
         }
 
+        public void changePassword(String encodedPassword) {
+                if (encodedPassword == null || encodedPassword.isBlank()) {
+                        throw new IllegalArgumentException("Password cannot be empty");
+                }
+
+                this.passwordHash = encodedPassword;
+        }
+
 }

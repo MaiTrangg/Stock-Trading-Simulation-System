@@ -16,6 +16,8 @@ public class AuthController {
     private final LogoutUseCase logoutUseCase;
     private final VerifyOtpUseCase verifyOtpUseCase;
     private final  ResendOtpUseCase resendOtpUseCase;
+    private final ForgotPasswordUseCase forgotPasswordUseCase;
+    private final ResetPasswordUseCase resetPasswordUseCase;
 
     @PostMapping("/register")
     public ApiResponse<RegisterResponse> register(@RequestBody RegisterRequest request) {
@@ -58,6 +60,20 @@ public class AuthController {
         ApiResponse<String> apiResponse = new ApiResponse<>();
         resendOtpUseCase.execute(request.getEmail());
         return apiResponse.success("Resend OTP success");
+    }
+
+    @PostMapping("/forgot-password")
+    public ApiResponse<String> forgotPassword(@RequestBody ResendOtpRequest request) {
+        ApiResponse<String> apiResponse = new ApiResponse<>();
+        forgotPasswordUseCase.execute(request.getEmail());
+        return apiResponse.success("Sent OTP success");
+    }
+
+    @PostMapping("/reset-password")
+    public ApiResponse<String> resetPassword(@RequestBody ResetPasswordRequest request) {
+        ApiResponse<String> apiResponse = new ApiResponse<>();
+        resetPasswordUseCase.execute(request.getEmail(), request.getToken(), request.getNewPassword());
+        return apiResponse.success("Reset password success");
     }
 }
 
