@@ -14,17 +14,6 @@ spring:
     enabled: true
     locations: classpath:db/migration
 
-#  security:
-#      oauth2:
-#        client:
-#          registration:
-#            google:
-#              client-id: YOUR_CLIENT_ID
-#              client-secret: YOUR_SECRET
-#              scope:
-#                - email
-#                - profile
-
   mail:
     host: smtp.gmail.com
     port: 587
@@ -36,3 +25,23 @@ spring:
           auth: true
           starttls:
             enable: true
+
+  mcp:
+    url: http://localhost:3333/call
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id:
+            client-secret:
+            scope:
+              - email
+              - profile
+        provider:
+          google:
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+  logging:
+    level:
+      org.springframework.security: DEBUG

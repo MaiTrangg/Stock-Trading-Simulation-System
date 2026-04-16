@@ -36,6 +36,11 @@ public class UserEntity {
 
     private String status;
 
+    private String provider;
+
+    @Column(name = "provider_id")
+    private String providerId;
+
     @Column(name = "is_delete")
     private Boolean isDelete;
 

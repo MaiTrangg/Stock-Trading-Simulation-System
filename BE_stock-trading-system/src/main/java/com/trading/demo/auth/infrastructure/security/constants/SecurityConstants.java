@@ -17,6 +17,9 @@ public class SecurityConstants {
     public static final String AUTH_REGISTER = "/api/auth/register";
     public static final String AUTH_VERIFY_OTP = "/api/auth/verify-otp";
     public static final String AUTH_RESEND_OTP = "/api/auth/resend-otp";
+    public static final String STOCK_GET_LIST = "/api/stock/";
+    public static final String STOCK_PRICE_HISTORY = "/api/stock/{id}/price-history";
+    public static final String STOCK_BY_ID = "/api/stock/{id}";
     public static final String JWT_EXPIRED = "JWT expired";
     public static final String JWT_INVALID_SIGNATURE = "Invalid JWT signature";
     public static final String JWT_AUTH_ERROR = "JWT authentication error";

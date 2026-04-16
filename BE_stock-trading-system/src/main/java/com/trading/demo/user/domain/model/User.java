@@ -3,6 +3,7 @@ package com.trading.demo.user.domain.model;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.trading.demo.auth.domain.enums.AuthProvider;
 import com.trading.demo.common.enums.ErrorCode;
 import com.trading.demo.common.exception.AppException;
 import com.trading.demo.user.domain.enums.UserStatus;
@@ -18,6 +19,8 @@ public class User {
     private String email;
     private String passwordHash;
     private String status;
+    private String provider;
+    private String providerId;
 
     private Boolean isDelete;
     private Long version;
@@ -35,6 +38,23 @@ public class User {
         user.setIsDelete(false);
 
         return user;
+    }
+
+    public static User createGoogle(String username, String email, String providerId) {
+        User user = new User();
+        user.id = UUID.randomUUID();
+        user.username = username;
+        user.email = email;
+        user.passwordHash = null;
+        user.provider = AuthProvider.GOOGLE.name();
+        user.providerId = providerId;
+        user.status = UserStatus.ACTIVE.name();
+        user.setIsDelete(false);
+        return user;
+    }
+
+    public boolean isLocal() {
+        return AuthProvider.LOCAL.name().equals(this.provider);
     }
 
     public void updateProfile(String username) {

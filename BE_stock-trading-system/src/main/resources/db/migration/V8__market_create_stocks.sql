@@ -7,12 +7,10 @@ CREATE TABLE stocks
     sector       VARCHAR(100),
     industry     VARCHAR(100),
     status       VARCHAR(20) DEFAULT 'ACTIVE',
-
     created_at   TIMESTAMP   DEFAULT NOW(),
     created_by   UUID,
     updated_at   TIMESTAMP   DEFAULT NOW(),
     updated_by   UUID,
-
     is_delete    BOOLEAN     DEFAULT FALSE,
     version      BIGINT      DEFAULT 0
 );
