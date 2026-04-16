@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trading.demo.auth.application.constant.AuthMessage;
-import com.trading.demo.auth.application.dto.ResetPasswordRequest;
 import com.trading.demo.auth.application.dto.request.LoginRequest;
 import com.trading.demo.auth.application.dto.request.RegisterRequest;
 import com.trading.demo.auth.application.dto.request.ResendOtpRequest;
+import com.trading.demo.auth.application.dto.request.ResetPasswordRequest;
 import com.trading.demo.auth.application.dto.request.VerifyOtpRequest;
 import com.trading.demo.auth.application.dto.response.AuthResponse;
 import com.trading.demo.auth.application.dto.response.RegisterResponse;

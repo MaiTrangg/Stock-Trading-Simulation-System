@@ -35,7 +35,23 @@ public enum ErrorCode {
     OTP_COOLDOWN("A010", "OTP is still in cooldown period", HttpStatus.TOO_MANY_REQUESTS),
     OTP_ALREADY_EXISTS("A011", "There is already an active OTP", HttpStatus.BAD_REQUEST),
     UNAUTHORIZED("A012", "Unauthorized", HttpStatus.UNAUTHORIZED),
-    ;
+
+    // ===== MARKET =====
+    MARKET_API_RESPONSE_NULL("M001", "Market API response is null", HttpStatus.BAD_GATEWAY),
+
+    MARKET_API_RATE_LIMIT("M002", "Market API rate limit exceeded", HttpStatus.TOO_MANY_REQUESTS),
+
+    MARKET_API_INVALID_RESPONSE("M003", "Market API invalid response", HttpStatus.BAD_GATEWAY),
+
+    MARKET_API_DATE_PARSE_ERROR("M004", "Failed to parse date from Market API", HttpStatus.INTERNAL_SERVER_ERROR),
+
+    MARKET_API_NUMBER_PARSE_ERROR("M005", "Failed to parse number from Market API", HttpStatus.INTERNAL_SERVER_ERROR),
+
+    MARKET_API_HTTP_ERROR("M006", "Market API HTTP call failed", HttpStatus.BAD_GATEWAY),
+
+    MARKET_API_UNKNOWN_ERROR("M007", "Unknown Market API error", HttpStatus.INTERNAL_SERVER_ERROR),
+    MARKET_PRICE_FETCH_FAILED("M008", "Failed to fetch market prices from provider", HttpStatus.BAD_GATEWAY);
+
     private String code;
     private String message;
     private HttpStatus status;

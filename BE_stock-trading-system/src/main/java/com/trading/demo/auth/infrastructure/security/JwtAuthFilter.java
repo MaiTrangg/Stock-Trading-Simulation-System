@@ -27,13 +27,26 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtProvider jwtProvider;
 
+    private static final List<String> PUBLIC_PATHS = List.of(
+            SecurityConstants.AUTH_LOGIN,
+            SecurityConstants.AUTH_REGISTER,
+            SecurityConstants.AUTH_VERIFY_OTP,
+            SecurityConstants.AUTH_RESEND_OTP,
+            SecurityConstants.STOCK_GET_LIST,
+            SecurityConstants.STOCK_BY_ID,
+            SecurityConstants.STOCK_PRICE_HISTORY,
+            "/oauth2",
+            "/login/oauth2",
+            "/ws"
+    );
+
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getServletPath();
-        return path.startsWith(SecurityConstants.AUTH_LOGIN)
-                || path.startsWith(SecurityConstants.AUTH_REGISTER)
-                || path.startsWith(SecurityConstants.AUTH_VERIFY_OTP)
-                || path.startsWith(SecurityConstants.AUTH_RESEND_OTP);
+        log.info("PATH: {}", path);
+
+        return PUBLIC_PATHS.stream().anyMatch(path::startsWith)
+                || path.contains("/ws/");
     }
 
     @Override

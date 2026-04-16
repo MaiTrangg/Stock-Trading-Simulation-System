@@ -25,7 +25,6 @@ public class VerifyOtpUseCase {
 
     @Transactional
     public void execute(String email, String otpInput) {
-        System.out.println("enter verify otp");
         // 1. find user by email
         User user =
                 userRepository
@@ -51,7 +50,6 @@ public class VerifyOtpUseCase {
 
         // 4. check expires for email verification
         if (ev.isExpired()) {
-            System.out.println("otp expires");
             throw new AppException(ErrorCode.OTP_EXPIRED);
         }
 
