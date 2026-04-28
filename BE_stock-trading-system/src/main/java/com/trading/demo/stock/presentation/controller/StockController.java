@@ -28,18 +28,16 @@ public class StockController {
 
     @GetMapping("/")
     public ApiResponse<List<StockResponse>> getStocks() {
-        return new ApiResponse<List<StockResponse>>()
-                .success(MarketDataConstant.GET_STOCKS_SUCCESS, getStocks.execute());
+        return ApiResponse.success(getStocks.execute(), MarketDataConstant.GET_STOCKS_SUCCESS);
     }
 
     @GetMapping("/{id}")
     public ApiResponse<StockResponse> getStock(@PathVariable UUID id) {
-        return new ApiResponse<StockResponse>().success(MarketDataConstant.GET_STOCK_SUCCESS, getDetail.execute(id));
+        return ApiResponse.success(getDetail.execute(id), MarketDataConstant.GET_STOCK_SUCCESS);
     }
 
     @GetMapping("/{id}/price-history")
     public ApiResponse<List<PriceHistoryResponse>> getHistory(@PathVariable UUID id) {
-        return new ApiResponse<List<PriceHistoryResponse>>()
-                .success(MarketDataConstant.GET_PRICE_HISTORY_SUCCESS, getHistory.execute(id));
+        return ApiResponse.success(getHistory.execute(id), MarketDataConstant.GET_PRICE_HISTORY_SUCCESS);
     }
 }

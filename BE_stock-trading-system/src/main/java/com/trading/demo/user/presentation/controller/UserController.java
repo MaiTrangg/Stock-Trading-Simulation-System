@@ -26,19 +26,17 @@ public class UserController {
 
     @GetMapping("/get-profile")
     public ApiResponse<UserResponse> getMyProfile() {
-        return new ApiResponse<UserResponse>()
-                .success(UserMessage.GET_PROFILE_SUCCESS, userProfileUseCase.getUserProfile());
+        return ApiResponse.success(userProfileUseCase.getUserProfile(), UserMessage.GET_PROFILE_SUCCESS);
     }
 
     @PatchMapping("/update-profile")
     public ApiResponse<UserResponse> updateProfile(@RequestBody UpdateUserRequest request) {
-        return new ApiResponse<UserResponse>()
-                .success(UserMessage.UPDATE_PROFILE_SUCCESS, userProfileUseCase.updateUserProfile(request));
+        return ApiResponse.success(userProfileUseCase.updateUserProfile(request), UserMessage.UPDATE_PROFILE_SUCCESS);
     }
 
     @PatchMapping("/change-password")
     public ApiResponse<String> changePassword(@RequestBody ChangePasswordRequest request) {
         changePasswordUseCase.execute(request);
-        return new ApiResponse<String>().success(UserMessage.CHANGE_PASSWORD_SUCCESS, null);
+        return ApiResponse.success(null, UserMessage.CHANGE_PASSWORD_SUCCESS);
     }
 }

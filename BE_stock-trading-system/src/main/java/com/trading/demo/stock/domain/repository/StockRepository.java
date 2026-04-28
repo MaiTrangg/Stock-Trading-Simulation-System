@@ -24,4 +24,6 @@ public interface StockRepository {
 
     long count();
 
+    String findSymbolById(UUID id);
+
 }

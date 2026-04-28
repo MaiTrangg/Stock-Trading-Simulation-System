@@ -17,4 +17,7 @@ public interface JpaStock extends JpaRepository<StockEntity, UUID> {
     @Query("SELECT s.id FROM StockEntity s WHERE s.symbol = :symbol")
     UUID findIdBySymbol(@Param("symbol") String symbol);
 
+    @Query("SELECT s.symbol FROM StockEntity s WHERE s.id = :id")
+    String findSymbolById(UUID id);
+
 }

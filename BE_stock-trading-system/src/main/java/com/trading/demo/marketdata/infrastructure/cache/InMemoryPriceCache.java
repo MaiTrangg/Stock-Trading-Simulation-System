@@ -16,7 +16,7 @@ public class InMemoryPriceCache implements PriceCachePort {
         long timestamp;
     }
 
-    private static final long TTL = 3000;
+    private static final long TTL = 7000;
 
     private final Map<String, CacheItem> cache = new ConcurrentHashMap<>();
 

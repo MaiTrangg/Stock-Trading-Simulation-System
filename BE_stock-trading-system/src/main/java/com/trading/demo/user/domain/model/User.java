@@ -34,6 +34,7 @@ public class User {
         user.setUsername(username);
         user.setEmail(email);
         user.setPasswordHash(encodedPassword);
+        user.setProvider(AuthProvider.LOCAL.name());
         user.setStatus(UserStatus.INACTIVE.name());
         user.setIsDelete(false);
 

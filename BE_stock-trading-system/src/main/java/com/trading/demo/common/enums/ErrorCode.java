@@ -50,7 +50,52 @@ public enum ErrorCode {
     MARKET_API_HTTP_ERROR("M006", "Market API HTTP call failed", HttpStatus.BAD_GATEWAY),
 
     MARKET_API_UNKNOWN_ERROR("M007", "Unknown Market API error", HttpStatus.INTERNAL_SERVER_ERROR),
-    MARKET_PRICE_FETCH_FAILED("M008", "Failed to fetch market prices from provider", HttpStatus.BAD_GATEWAY);
+    MARKET_PRICE_FETCH_FAILED("M008", "Failed to fetch market prices from provider", HttpStatus.BAD_GATEWAY),
+
+    //=== TRADING ====
+    ORDER_NOT_FOUND("T001", "Order not found", HttpStatus.NOT_FOUND),
+
+    INVALID_ORDER_SIDE("T002", "Invalid order side", HttpStatus.BAD_REQUEST),
+    INVALID_ORDER_TYPE("T003", "Invalid order type", HttpStatus.BAD_REQUEST),
+
+    INSUFFICIENT_BALANCE("T004", "Insufficient balance", HttpStatus.BAD_REQUEST),
+    INSUFFICIENT_STOCK("T005", "Insufficient stock quantity", HttpStatus.BAD_REQUEST),
+
+    ORDER_ALREADY_FILLED("T006", "Order already filled", HttpStatus.BAD_REQUEST),
+    ORDER_ALREADY_CANCELLED("T007", "Order already cancelled", HttpStatus.BAD_REQUEST),
+
+    INVALID_ORDER_STATUS("T008", "Invalid order status", HttpStatus.BAD_REQUEST),
+
+    MATCHING_FAILED("T009", "Order matching failed", HttpStatus.INTERNAL_SERVER_ERROR),
+
+    TRADE_EXECUTION_FAILED("T010", "Trade execution failed", HttpStatus.INTERNAL_SERVER_ERROR),
+
+    PRICE_NOT_AVAILABLE("T011", "Market price not available", HttpStatus.BAD_GATEWAY),
+
+    ORDER_CREATION_FAILED("T012", "Failed to create order", HttpStatus.INTERNAL_SERVER_ERROR),
+
+    CANCEL_ORDER_FAILED("T013", "Failed to cancel order", HttpStatus.INTERNAL_SERVER_ERROR),
+
+    ORDER_ACCESS_DENIED("T014", "Order access denied", HttpStatus.FORBIDDEN),
+    INVALID_ORDER_STATE("T015", "Invalid order state", HttpStatus.BAD_REQUEST),
+    TRADE_NOT_FOUND("T016", "Trade not found", HttpStatus.NOT_FOUND),
+    TRADE_ACCESS_DENIED("T017", "Trade access denied", HttpStatus.FORBIDDEN),
+    WALLET_NOT_FOUND("T018", "Wallet not found", HttpStatus.NOT_FOUND),
+    INSUFFICIENT_AVAILABLE_BALANCE("T019", "Insufficient available balance", HttpStatus.BAD_REQUEST),
+    INVALID_ORDER_PARAMETERS("T020", "Invalid order parameters", HttpStatus.BAD_REQUEST),
+
+    //PORTFOLIO-WALLET
+
+    FUND_NOT_FOUND("P001", "Fund not found", HttpStatus.NOT_FOUND),
+
+    INVALID_AMOUNT("P002", "Invalid amount", HttpStatus.BAD_REQUEST),
+
+    INVALID_REQUEST_PARAMETER("P003", "Invalid request parameter", HttpStatus.BAD_REQUEST),
+
+
+    // SYSTEM
+    INTERNAL_SERVER_ERROR("SYS001", "Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
+
 
     private String code;
     private String message;

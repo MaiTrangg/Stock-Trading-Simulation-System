@@ -16,4 +16,12 @@ public class MarketPrice {
     private BigDecimal close;
     private Long volume;
     private LocalDateTime timestamp;
+    private BigDecimal ceilingPrice;
+    private BigDecimal floorPrice;
+
+    private BigDecimal bestBidPrice;// price1 of bid
+    private BigDecimal bestAskPrice; // price1 of ask
+
+    private int bestBidQuantity; // quantity1 of bid
+    private int bestAskQuantity; // quantity1 of ask
 }
