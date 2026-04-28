@@ -1,5 +1,6 @@
 package com.trading.demo.auth.presentation.controller;
 
+import com.trading.demo.auth.application.dto.request.*;
 import com.trading.demo.auth.application.usecase.ForgotPasswordUseCase;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,11 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trading.demo.auth.application.constant.AuthMessage;
-import com.trading.demo.auth.application.dto.request.LoginRequest;
-import com.trading.demo.auth.application.dto.request.RegisterRequest;
-import com.trading.demo.auth.application.dto.request.ResendOtpRequest;
-import com.trading.demo.auth.application.dto.request.ResetPasswordRequest;
-import com.trading.demo.auth.application.dto.request.VerifyOtpRequest;
 import com.trading.demo.auth.application.dto.response.AuthResponse;
 import com.trading.demo.auth.application.dto.response.RegisterResponse;
 import com.trading.demo.auth.application.usecase.LoginUseCase;
@@ -42,52 +38,49 @@ public class AuthController {
 
     @PostMapping("/register")
     public ApiResponse<RegisterResponse> register(@RequestBody RegisterRequest request) {
-        return new ApiResponse<RegisterResponse>()
-                .success(AuthMessage.REGISTER_SUCCESS, registerUseCase.execute(request));
+        return ApiResponse.success(registerUseCase.execute(request), AuthMessage.REGISTER_SUCCESS);
     }
 
     @PostMapping("/login")
     public ApiResponse<AuthResponse> login(@RequestBody LoginRequest request) {
-        return new ApiResponse<AuthResponse>()
-                .success(AuthMessage.LOGIN_SUCCESS, loginUseCase.execute(request));
+        return ApiResponse.success(loginUseCase.execute(request), AuthMessage.LOGIN_SUCCESS);
     }
 
     @PostMapping("/logout")
     public ApiResponse<String> logout(@RequestParam String refreshToken) {
         logoutUseCase.execute(refreshToken);
-        return new ApiResponse<String>().success(AuthMessage.LOGOUT_SUCCESS, null);
+        return ApiResponse.success(null, AuthMessage.LOGOUT_SUCCESS);
     }
 
-    @SuppressWarnings("checkstyle:LineLength")
+
     @PostMapping("/refresh-token")
-    public ApiResponse<AuthResponse> refreshToken(@RequestBody RefreshToken refreshToken) {
-        return new ApiResponse<AuthResponse>()
-                .success(
-                        AuthMessage.REFRESH_TOKEN_SUCCESS,
-                        refreshTokenUseCase.execute(refreshToken.getToken()));
+    public ApiResponse<AuthResponse> refreshToken(@RequestBody RefreshTokenRequest req) {
+        return ApiResponse.success(
+                refreshTokenUseCase.execute(req.getToken()),
+                AuthMessage.REFRESH_TOKEN_SUCCESS);
     }
 
     @PostMapping("/verify-otp")
     public ApiResponse<String> verifyOtp(@RequestBody VerifyOtpRequest request) {
         verifyOtpUseCase.execute(request.getEmail(), request.getOtp());
-        return new ApiResponse<String>().success(AuthMessage.VERIFY_OTP_SUCCESS, null);
+        return ApiResponse.success(null, AuthMessage.VERIFY_OTP_SUCCESS);
     }
 
     @PostMapping("/resend-otp")
     public ApiResponse<String> resendOtp(@RequestBody ResendOtpRequest request) {
         resendOtpUseCase.execute(request.getEmail());
-        return new ApiResponse<String>().success(AuthMessage.RESEND_OTP_SUCCESS, null);
+        return ApiResponse.success(null, AuthMessage.RESEND_OTP_SUCCESS);
     }
 
     @PostMapping("/forgot-password")
     public ApiResponse<String> forgotPassword(@RequestBody ResendOtpRequest request) {
         forgotPasswordUseCase.execute(request.getEmail());
-        return new ApiResponse<String>().success(AuthMessage.SEND_OTP_SUCCESS, null);
+        return ApiResponse.success(null, AuthMessage.SEND_OTP_SUCCESS);
     }
 
     @PostMapping("/reset-password")
     public ApiResponse<String> resetPassword(@RequestBody ResetPasswordRequest request) {
         resetPasswordUseCase.execute(request.getEmail(), request.getToken(), request.getNewPassword());
-        return new ApiResponse<String>().success(AuthMessage.RESET_PASSWORD_SUCCESS, null);
+        return ApiResponse.success(null, AuthMessage.RESET_PASSWORD_SUCCESS);
     }
 }

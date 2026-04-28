@@ -66,4 +66,9 @@ public class StockRepositoryImpl implements StockRepository {
         return jpaStock.count();
     }
 
+    @Override
+    public String findSymbolById(UUID id) {
+        return jpaStock.findSymbolById(id);
+    }
+
 }

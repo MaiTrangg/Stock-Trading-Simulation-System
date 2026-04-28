@@ -47,6 +47,7 @@ public class SecurityConfig {
                                                 SecurityConstants.STOCK_GET_LIST,
                                                 SecurityConstants.STOCK_BY_ID,
                                                 SecurityConstants.STOCK_PRICE_HISTORY,
+                                                "/api/auth/refresh-token",
                                                 "/",
                                                 "/test.html",
                                                 "/static/**",
@@ -58,10 +59,25 @@ public class SecurityConfig {
                                         .permitAll()
                                         .requestMatchers(
                                                 "/api/auth/logout",
-                                                "/api/auth/refresh-token",
                                                 "/api/user/get-profile",
                                                 "/api/user/update-profile",
-                                                "/api/user/change-password")
+                                                "/api/user/change-password",
+                                                "/api/orders",
+                                                "/api/orders/get-orders",
+                                                "/api/orders/{id}",
+                                                "/api/orders/{id}/cancel",
+                                                "/api/orders/{id}/history",
+                                                "/api/orders/{orderId}/trades",
+                                                "/api/orders/open",
+                                                "/api/trades",
+                                                "/api/trades/{id}",
+                                                "/api/wallet",
+                                                "/api/wallet/deposit",
+                                                "/api/wallet/transactions",
+                                                "/api/portfolio/summary",
+                                                "/api/portfolio/holdings",
+                                                "/api/portfolio/transactions"
+                                        )
                                         .authenticated()
                                         .anyRequest()
                                         .authenticated())

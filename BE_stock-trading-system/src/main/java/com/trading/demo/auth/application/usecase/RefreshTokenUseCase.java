@@ -3,6 +3,7 @@ package com.trading.demo.auth.application.usecase;
 import java.util.List;
 import java.util.UUID;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import com.trading.demo.auth.application.dto.response.AuthResponse;
@@ -17,12 +18,14 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class RefreshTokenUseCase {
-    private RefreshTokenRepository refreshTokenRepository;
-    private JwtProvider jwtProvider;
-    private RoleRepository roleRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
+    private final JwtProvider jwtProvider;
+    private final RoleRepository roleRepository;
 
     public AuthResponse execute(String refreshTokenStr) {
+        log.info("refreshTokenStr: {}", refreshTokenStr);
         // 1. find refresh-token
         RefreshToken refreshToken =
                 refreshTokenRepository

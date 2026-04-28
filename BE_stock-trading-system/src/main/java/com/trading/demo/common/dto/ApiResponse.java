@@ -19,19 +19,23 @@ import lombok.Setter;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {
-    private boolean success;
-    private String message;
     private T data;
+    private String message;
+    private boolean success;
     private int status;
+    private String code;
     private LocalDateTime timestamp;
 
-    public ApiResponse<T> success(String message, T data) {
+    
+    public static <T> ApiResponse<T> success(T data, String message) {
         return ApiResponse.<T>builder()
-                .success(true)
-                .message(message)
                 .data(data)
-                .timestamp(LocalDateTime.now())
+                .message(message)
+                .success(true)
                 .status(HttpStatus.OK.value())
+                .timestamp(LocalDateTime.now())
                 .build();
     }
+
+    
 }
